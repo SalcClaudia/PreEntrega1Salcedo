@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Playwrite DE Grund";
+}
+
+/*.body{
+  background-color: #FFE0B5;
+}*/
+
+.container-fluid, .navbar{
+  background-color: #FFF2D7;
+  padding: 10px;
+  margin: 0;
+}
+
+.cart{
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+
+.emerald-icon{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.navbar-nav{
+  color: black;
+}
