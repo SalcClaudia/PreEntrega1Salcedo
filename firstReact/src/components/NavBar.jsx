@@ -12,23 +12,25 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="#">Features</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Pricing</a>
-            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown link
+                Categorías
               </a>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                <p className='p-items'>Tipos</p>
+                <li><a className="dropdown-item" href="#">Brazaletes</a></li>
+                <li><a className="dropdown-item" href="#">Anillos</a></li>
+                <li><a className="dropdown-item" href="#">Aretes</a></li>
+                <li><a className="dropdown-item" href="#">Tobilleras</a></li>
               </ul>
             </li>
           </ul>
+            <div className="container-md">
+              <form className="d-flex" role="search">
+                <input className="form-control me-2" type="search" placeholder="Encuentra lo que necesitas" aria-label="Search"></input>
+                  <button className="btn btn-outline-success" type="submit">Buscar</button>
+              </form>
+            </div>
         </div>
         <CartWidget />
       </div>
