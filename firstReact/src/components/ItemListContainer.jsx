@@ -1,22 +1,45 @@
-const ItemListContainer = ({ summerdeal, deal }) => {
+import { useEffect, useState } from "react";
+
+
+const ItemListContainer = ({ summerdeal }) => {
+
+
+    const [stock, setStock] = useState([]);
+
+    useEffect(() => {
+        fetch("https://api.mercadolibre.com/sites/MLA/search?q=jewelery#json")
+            .then(response => response.json())
+            .then(products => {
+                setStock(products.results);
+            })
+
+    }, [])
+
+    
+
     return (
         <>
-            <h1>{summerdeal}</h1>
-            <div id="carouselExampleRide" className="carousel slide" data-bs-ride="true">
-                <div className="carousel-inner">
-                    <div className="deal-container">
-                        <img src={deal} alt="" />
-                    </div>
+            <section className="wrapper-deal">
+                <div className="container-img">
+                    <h1 className="title-deal">{summerdeal}</h1>
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
+            </section>
+
+            <div className="card-container">
+                {stock.map(cards => (
+                    <div key={cards.id} className="card">
+                        <div className="deal-container">
+                            <img className="card-img-top" src={cards.thumbnail} alt={cards.title} />
+                        </div>
+                        <div className="card-body">
+                            <h5 className="card-title">{cards.title}</h5>
+                            <p className="card-text">{cards.price}</p>
+                            <a href="#" className="btn btn-outline-success">Go somewhere</a>
+                        </div>
+                    </div>
+                ))}
             </div>
+
         </>
     )
 };

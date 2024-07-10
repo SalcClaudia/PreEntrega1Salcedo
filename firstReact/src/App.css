@@ -6,34 +6,73 @@
   font-family: "Playwrite DE Grund";
 }
 
-/*.body{
-  background-color: #FFE0B5;
-}*/
-
-.container-fluid, .navbar{
+.container-fluid,
+.navbar {
   background-color: #FFF2D7;
   padding: 10px;
   margin: 0;
 }
 
-.cart{
+.cart {
   width: 30px;
   height: 30px;
   margin-right: 8px;
 }
 
 
-.emerald-icon{
+.emerald-icon {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
-.navbar-nav{
+.navbar-nav {
   color: black;
 }
 
-.p-items{
-font-weight: bold;
+.p-items {
+  font-weight: bold;
 
+}
+
+.custom-width{
+  width: 40rem;
+}
+
+.container-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../src/assets/landing2.jpg");
+  background-size: cover;
+  height: 600px;
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.title-deal {
+  color: azure;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #191919;
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  margin-top: 50px;
+  width: 18rem;
+}
+
+
+.card-body {
+  background-color: #FFFFF0;
 }
