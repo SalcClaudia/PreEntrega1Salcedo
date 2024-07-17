@@ -1,45 +1,41 @@
 import { useEffect, useState } from "react";
+import MainBanner from "./MainBanner";
+import jewelery from "./jewelery.json"
+import { useParams } from "react-router-dom";
 
 
-const ItemListContainer = ({ summerdeal }) => {
+const ItemListContainer = () => {
 
-
-    const [stock, setStock] = useState([]);
+    const [cards, setCards] = useState(jewelery)
+    const { id } = useParams();
 
     useEffect(() => {
-        fetch("https://api.mercadolibre.com/sites/MLA/search?q=jewelery#json")
-            .then(response => response.json())
-            .then(products => {
-                setStock(products.results);
-            })
+        setCards(id ? jewelery.filter (cards => cards.category == id) : jewelery)
 
-    }, [])
-
-    
+    }, [id])
 
     return (
         <>
-            <section className="wrapper-deal">
-                <div className="container-img">
-                    <h1 className="title-deal">{summerdeal}</h1>
+            <MainBanner summerdeal={"Ultimos lanzamientos de verano"} deal={"https://imgs.search.brave.com/9-MG0a60mH_KbNES3Lpa6h6_dqZGMko3ioa7LH0X6Uk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZWNhc3Rlci5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjQv/MDMvaW1hZ2VfMjU0/NGRjLnBuZz93PTgw/MCZoPTgwMCZjcm9w/PTE"} />
+            <div className="container">
+                <div className="row">
+                    {cards.map(cards => (
+                        <div className="col">
+                            <div key={cards.id} className="card">
+                                <div className="deal-container">
+                                    <img className="card-img-top" src={cards.image} alt={cards.name} />
+                                </div>
+                                <div className="card-body">
+                                    <h5 className="card-title text-light">{cards.name}</h5>
+                                    <p className="card-text text-light">${cards.price}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+
+
                 </div>
-            </section>
-
-            <div className="card-container">
-                {stock.map(cards => (
-                    <div key={cards.id} className="card">
-                        <div className="deal-container">
-                            <img className="card-img-top" src={cards.thumbnail} alt={cards.title} />
-                        </div>
-                        <div className="card-body">
-                            <h5 className="card-title">{cards.title}</h5>
-                            <p className="card-text">{cards.price}</p>
-                            <a href="#" className="btn btn-outline-success">Go somewhere</a>
-                        </div>
-                    </div>
-                ))}
             </div>
-
         </>
     )
 };
